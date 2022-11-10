@@ -3,13 +3,12 @@ package com.example.clientsservice.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-@ToString
 //
 @Entity
 @Table(name = "addresses")
@@ -40,4 +39,30 @@ public class Address {
 	@OneToOne
 	@JoinColumn(name = "client_id", referencedColumnName = "id",nullable = false)
 	private  Client client;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Address address = (Address) o;
+		return Objects.equals(id, address.id) && Objects.equals(region, address.region) && Objects.equals(district, address.district) && Objects.equals(city, address.city) && Objects.equals(street, address.street) && Objects.equals(house, address.house) && Objects.equals(apartment, address.apartment);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, region, district, city, street, house, apartment);
+	}
+
+	@Override
+	public String toString() {
+		return "Address{" +
+			"id=" + id +
+			", region='" + region + '\'' +
+			", district='" + district + '\'' +
+			", city='" + city + '\'' +
+			", street='" + street + '\'' +
+			", house='" + house + '\'' +
+			", apartment='" + apartment + '\'' +
+			'}';
+	}
 }

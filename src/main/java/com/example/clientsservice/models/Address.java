@@ -37,7 +37,8 @@ public class Address {
 	private String apartment;
 
 	@OneToOne
-	@JoinColumn(name = "client_id", referencedColumnName = "id",nullable = false)
+	@JoinColumn(name = "client_id", referencedColumnName = "id",nullable = false,
+		foreignKey = @ForeignKey(name = "FK_address_clients"))
 	private  Client client;
 
 	@Override

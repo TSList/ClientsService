@@ -44,6 +44,7 @@ public class Client {
 			foreignKey = @ForeignKey(name = "FK_accounts"))
 	)
 	private Set<Account> accounts;
+
 	@OneToOne (mappedBy = "client",fetch = FetchType.LAZY)
 	private Address address;
 

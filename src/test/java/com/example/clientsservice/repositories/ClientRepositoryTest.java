@@ -37,7 +37,7 @@ public class ClientRepositoryTest {
 	@Test
 	@Order(2)
 	void findALLByCount() {
-		Assertions.assertEquals(2,clientRepository.findAll().size());
+		Assertions.assertEquals(2, clientRepository.findAll().size());
 	}
 
 	@Test
@@ -45,13 +45,24 @@ public class ClientRepositoryTest {
 	void findALLByCollection() {
 		List<Client> original = List.of(a, b);
 		List<Client> saved = clientRepository.findAll();
-		Assertions.assertIterableEquals(original,saved);
+		Assertions.assertIterableEquals(original, saved);
 	}
 
 	@Test
 	@Order(4)
+	void findAllBtSNP() {
+		List<Client> actual = clientRepository.findAllBySurnameAndNameAndPatronymic(
+			a.getSurname(), a.getName(), a.getPatronymic()
+		);
+
+		System.out.println(actual);
+		Assertions.assertEquals(a,actual.get(0));
+	}
+
+	@Test
+	@Order(5)
 	void deleteAll() {
 		clientRepository.deleteAll();
-		Assertions.assertEquals(0,clientRepository.findAll().size());
+		Assertions.assertEquals(0, clientRepository.findAll().size());
 	}
 }

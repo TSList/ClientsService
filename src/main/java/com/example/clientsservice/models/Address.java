@@ -36,4 +36,8 @@ public class Address {
 	//квартира
 	@Column(length = 100)
 	private String apartment;
+
+	@OneToOne
+	@JoinColumn(name = "client_id", referencedColumnName = "id",nullable = false)
+	private  Client client;
 }

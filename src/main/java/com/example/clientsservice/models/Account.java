@@ -21,10 +21,7 @@ public class Account {
 	@Column(columnDefinition = "int default 0", nullable = false)
 	private int amount;
 
-	@ManyToMany
-	@JoinTable (name="clients_accounts",
-		joinColumns=@JoinColumn (name="client_id"),
-		inverseJoinColumns=@JoinColumn(name="account_id"))
+	@ManyToMany(mappedBy = "accounts")
 	private Set<Client> clients;
 
 	@Override

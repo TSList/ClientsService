@@ -38,10 +38,11 @@ public class Client {
 	private Set<Phone> phones;
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable (name="clients_accounts",
-		joinColumns=@JoinColumn (name="client_id"),
-		inverseJoinColumns=@JoinColumn(name="account_id"))
-	private Set<Account> accounts = new HashSet<Account>();
+	@JoinTable(
+		name = "clients_accounts",
+		joinColumns = @JoinColumn(name = "client_id",referencedColumnName = "id"),
+		inverseJoinColumns = @JoinColumn(name = "account_id"))
+	private Set<Account> accounts;
 
 	@OneToOne (mappedBy = "client",fetch = FetchType.LAZY)
 	private Address address;

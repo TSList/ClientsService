@@ -43,7 +43,10 @@ public class ClientAccountTest {
 	@Transactional
 	void save() {
 		a = clientService.save(a);
-		a.setAccounts(Set.of(account,account1));
+//		account = accountService.save(account);
+//		account1 = accountService.save(account1);
+//		a.setAccounts(Set.of(account,account1));
+//
 //		account = accountService.save(account);
 //		a.setAccounts(Set.of(account));
 //		a.setAccounts(Set.of(account));

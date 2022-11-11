@@ -3,6 +3,7 @@ package com.example.clientsservice.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -19,7 +20,11 @@ public class Account {
 	private Long id;
 	@Column(columnDefinition = "int default 0", nullable = false)
 	private int amount;
-	@ManyToMany(mappedBy = "accounts",fetch = FetchType.LAZY)
+
+	@ManyToMany
+	@JoinTable (name="clients_accounts",
+		joinColumns=@JoinColumn (name="client_id"),
+		inverseJoinColumns=@JoinColumn(name="account_id"))
 	private Set<Client> clients;
 
 	@Override

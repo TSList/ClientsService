@@ -3,6 +3,7 @@ package com.example.clientsservice.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -35,15 +36,12 @@ public class Client {
 	private String email;
 	@OneToMany(mappedBy = "client",fetch = FetchType.LAZY)
 	private Set<Phone> phones;
+
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-		name = "clients_accounts",
-		joinColumns = @JoinColumn(name = "client_id",nullable = false,
-			foreignKey = @ForeignKey(name = "FK_clients")),
-		inverseJoinColumns = @JoinColumn(name = "account_id",nullable = false,
-			foreignKey = @ForeignKey(name = "FK_accounts"))
-	)
-	private Set<Account> accounts;
+	@JoinTable (name="clients_accounts",
+		joinColumns=@JoinColumn (name="client_id"),
+		inverseJoinColumns=@JoinColumn(name="account_id"))
+	private Set<Account> accounts = new HashSet<Account>();
 
 	@OneToOne (mappedBy = "client",fetch = FetchType.LAZY)
 	private Address address;
@@ -60,6 +58,8 @@ public class Client {
 	public int hashCode() {
 		return Objects.hash(id, surname, name, patronymic, gender, email);
 	}
+
+
 
 	@Override
 	public String toString() {

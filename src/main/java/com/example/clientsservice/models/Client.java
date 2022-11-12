@@ -37,12 +37,12 @@ public class Client {
 	@OneToMany(mappedBy = "client",fetch = FetchType.LAZY)
 	private Set<Phone> phones;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)//,cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinTable(
 		name = "clients_accounts",
-		joinColumns = @JoinColumn(name = "client_id",referencedColumnName = "id"),
+		joinColumns = 	@JoinColumn(name = "client_id"),
 		inverseJoinColumns = @JoinColumn(name = "account_id"))
-	private Set<Account> accounts;
+	private Set<Account> accounts = new HashSet<>();
 
 	@OneToOne (mappedBy = "client",fetch = FetchType.LAZY)
 	private Address address;
@@ -60,7 +60,15 @@ public class Client {
 		return Objects.hash(id, surname, name, patronymic, gender, email);
 	}
 
+//public void addAccount(Account account) {
+//	this.accounts.add(account);
+//	//account.getClients().add(this);
+//	}
 
+//	public void removeAccount(Account account) {
+//		this.accounts.remove(account);
+//		account.getClients().remove(this);
+//	}
 
 	@Override
 	public String toString() {

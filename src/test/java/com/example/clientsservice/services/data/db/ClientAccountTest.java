@@ -40,20 +40,14 @@ public class ClientAccountTest {
 
 	@Test
 	@Order(1)
-	@Transactional
 	void save() {
+		account = accountService.save(account);
+		account1 = accountService.save(account1);
 		a = clientService.save(a);
-//		account = accountService.save(account);
-//		account1 = accountService.save(account1);
-//		a.setAccounts(Set.of(account,account1));
-//
-//		account = accountService.save(account);
-//		a.setAccounts(Set.of(account));
-//		a.setAccounts(Set.of(account));
-//		account = accountService.save(account);
-//		account.setClients(Set.of(a,b));
-//		a.setAccounts(Set.of(account));
-//		b.setAccounts(Set.of(account));
+		account.setClients(Set.of(a));
+		account1.setClients(Set.of(a));
+		a.setAccounts(Set.of(account,account1));
+		int b = 0;
 	}
 
 

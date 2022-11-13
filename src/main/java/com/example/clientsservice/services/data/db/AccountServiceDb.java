@@ -16,4 +16,9 @@ public class AccountServiceDb implements AccountService {
 	public Account save(Account account) {
 		return accountRepository.save(account);
 	}
+
+	@Override
+	public Account findById(Long id) {
+		return accountRepository.findById(id).get();
+	}
 }

@@ -60,15 +60,6 @@ public class Client {
 		return Objects.hash(id, surname, name, patronymic, gender, email);
 	}
 
-//public void addAccount(Account account) {
-//	this.accounts.add(account);
-//	//account.getClients().add(this);
-//	}
-
-//	public void removeAccount(Account account) {
-//		this.accounts.remove(account);
-//		account.getClients().remove(this);
-//	}
 
 	@Override
 	public String toString() {

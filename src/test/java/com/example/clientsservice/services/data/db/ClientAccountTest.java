@@ -41,13 +41,20 @@ public class ClientAccountTest {
 	@Test
 	@Order(1)
 	void save() {
+		a = clientService.save(a);
 		account = accountService.save(account);
 		account1 = accountService.save(account1);
+		//
+		Set<Client> clients = Set.of(a);
+		Set<Account> accounts = Set.of(account, account1);
+		//
+		a.setAccounts(accounts);
+		account.setClients(clients);
+		account1.setClients(clients);
+		//
 		a = clientService.save(a);
-		account.setClients(Set.of(a));
-		account1.setClients(Set.of(a));
-		a.setAccounts(Set.of(account,account1));
-		int b = 0;
+		account = accountService.save(account);
+		account1 = accountService.save(account1);
 	}
 
 
@@ -55,12 +62,9 @@ public class ClientAccountTest {
 	@Order(2)
 	@Transactional
 	void findByClientId(){
-//		Client actualClient = clientService.findById(a.getId());
-//		System.err.println(actualClient);
-//		System.err.println(actualClient.getAccounts());
-//		Client actualClientb = clientService.findById(b.getId());
-//		System.err.println(actualClientb);
-//		System.err.println(actualClientb.getAccounts());
+		Client actualClient = clientService.findById(a.getId());
+		System.err.println(actualClient);
+		System.err.println(actualClient.getAccounts());
 	}
 
 }

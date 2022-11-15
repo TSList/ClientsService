@@ -42,7 +42,7 @@ public class Client {
 		name = "clients_accounts",
 		joinColumns = 	@JoinColumn(name = "client_id"),
 		inverseJoinColumns = @JoinColumn(name = "account_id"))
-	private Set<Account> accounts = new HashSet<>();
+	private Set<Account> accounts;
 
 	@OneToOne (mappedBy = "client",fetch = FetchType.LAZY)
 	private Address address;

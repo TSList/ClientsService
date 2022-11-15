@@ -42,6 +42,7 @@ public class ClientAccountTest {
 	@Order(1)
 	void save() {
 		a = clientService.save(a);
+		//List<Account> accountList = accountService.saveALL(List.of(account,account1));
 		account = accountService.save(account);
 		account1 = accountService.save(account1);
 		//
@@ -53,6 +54,7 @@ public class ClientAccountTest {
 		account1.setClients(clients);
 		//
 		a = clientService.save(a);
+		accountService.saveALL(List.of(account,account1));
 		account = accountService.save(account);
 		account1 = accountService.save(account1);
 	}

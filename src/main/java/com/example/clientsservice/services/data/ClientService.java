@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.List;
 
 public interface ClientService {
+	List<Client> saveAll(List<Client> clients);
+
 	Client save(Client client);
 
 	List<Client> findAll();

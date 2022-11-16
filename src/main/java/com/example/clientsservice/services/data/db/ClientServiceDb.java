@@ -17,6 +17,11 @@ public class ClientServiceDb implements ClientService {
 private ClientRepository clientRepository;
 
 	@Override
+	public List<Client> saveAll(List<Client> clients) {
+		return clientRepository.saveAll(clients);
+	}
+
+	@Override
 	public Client save(Client client) {
 	return clientRepository.save(client);
 	}

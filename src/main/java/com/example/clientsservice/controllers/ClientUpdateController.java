@@ -8,6 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.example.clientsservice.models.Client.*;
+
 @Controller
 public class ClientUpdateController {
 
@@ -17,7 +22,18 @@ public class ClientUpdateController {
 	@GetMapping("clienUpdate")
 	public String load(@RequestParam("clientId") Integer id, Model model) {
 		Client client = clientService.findById(id);
-		model.addAttribute("client",client);
+		model.addAttribute("client", client);
+		/*for (Gender value : Gender.values()) {
+			model.addAttribute(value.name(),value==client.getGender() ? "selected" :"");
+		}*/
+
+		Map<String, String> genders = new HashMap<>();
+		for (Gender value : Gender.values()) {
+			genders.put(value.name(), value == client.getGender() ? "selected" : "");
+		}
+		model.addAttribute("genders", genders.entrySet());
+
+
 		return "clienUpdate";
 	}
 }

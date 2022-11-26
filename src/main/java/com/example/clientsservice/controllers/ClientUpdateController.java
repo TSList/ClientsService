@@ -46,7 +46,7 @@ public class ClientUpdateController {
 		Client dbClient = clientService.findById(client.getId());
 		client.setAddress(dbClient.getAddress());
 		clientService.save(client);
-	return new ModelAndView("redirect:clienUpdate", new ModelMap("clientId",client.getId()));
+		return new ModelAndView("redirect:clienUpdate", new ModelMap("clientId",client.getId()));
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceDb implements UserService {
@@ -24,4 +25,11 @@ public class UserServiceDb implements UserService {
 	public List<User> findAll() {
 		return userRepository.findAll();
 	}
+
+	@Override
+	public User findById (Integer id) {
+		return  userRepository.findById(id).get();
+	}
+
+
 }

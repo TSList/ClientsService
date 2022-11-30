@@ -8,7 +8,7 @@ public class MainController {
 
 	@GetMapping("/")
 	public String load() {
-	return "redirect:clients";
+	return "redirect:users";
 	}
 
 }

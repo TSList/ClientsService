@@ -36,9 +36,7 @@ public class Address {
 	@Column(length = 100)
 	private String apartment;
 
-	@OneToOne
-	@JoinColumn(name = "client_id", referencedColumnName = "id",nullable = false,
-		foreignKey = @ForeignKey(name = "FK_address_clients"))
+	@OneToOne(mappedBy = "address")
 	private  Client client;
 
 	@Override

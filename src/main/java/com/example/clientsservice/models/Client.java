@@ -44,7 +44,9 @@ public class Client {
 		inverseJoinColumns = @JoinColumn(name = "account_id"))
 	private Set<Account> accounts;
 
-	@OneToOne (mappedBy = "client",fetch = FetchType.LAZY)
+	@OneToOne (fetch = FetchType.LAZY)
+	@JoinColumn(name = "address_id", referencedColumnName = "id",
+		foreignKey = @ForeignKey(name = "FK_clients_address"))
 	private Address address;
 
 	@Override

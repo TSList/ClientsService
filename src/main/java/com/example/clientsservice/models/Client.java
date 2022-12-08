@@ -1,8 +1,13 @@
 package com.example.clientsservice.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -34,6 +39,12 @@ public class Client {
 	private Gender gender;
 	@Column(length = 50, nullable = false, unique = true)
 	private String email;
+
+	@Column(columnDefinition = "date")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	//@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
+	private LocalDate birthDate;
+
 	@OneToMany(mappedBy = "client",fetch = FetchType.LAZY)
 	private Set<Phone> phones;
 
@@ -43,6 +54,19 @@ public class Client {
 		joinColumns = 	@JoinColumn(name = "client_id"),
 		inverseJoinColumns = @JoinColumn(name = "account_id"))
 	private Set<Account> accounts;
+
+
+	public Client(Integer id, String surname, String name, String patronymic, Gender gender, String email, Set<Phone> phones, Set<Account> accounts, Address address) {
+		this.id = id;
+		this.surname = surname;
+		this.name = name;
+		this.patronymic = patronymic;
+		this.gender = gender;
+		this.email = email;
+		this.phones = phones;
+		this.accounts = accounts;
+		this.address = address;
+	}
 
 	@OneToOne (fetch = FetchType.LAZY)
 	@JoinColumn(name = "address_id", referencedColumnName = "id",
@@ -72,6 +96,10 @@ public class Client {
 			", patronymic='" + patronymic + '\'' +
 			", gender=" + gender +
 			", email='" + email + '\'' +
+			", birthDate=" + birthDate +
+			", phones=" + phones +
+			", accounts=" + accounts +
+			", address=" + address +
 			'}';
 	}
 }

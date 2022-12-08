@@ -31,6 +31,7 @@ public class ClientsServiceApplication {
 			,null,null,null);
 
 		clientRepository.saveAll(List.of(a,b));
+
 	}
 
 

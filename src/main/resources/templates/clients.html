@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Clients</title>
-    <link th:href="@{/css/index.css}" rel="stylesheet"/>
-    <script type="text/javascript" th:src="@{/js/index.js}"></script>
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/clientsAdd.js}"></script>
 </head>
 <body>
 <div class="clientForm">
-  <form th:action="@{/addClientForm}" method="post">
+  <form th:action="@{/addClientForm}"  id = "addClientForm" method="post">
     <input type="text" name="surname" placeholder="Surname">
     <input type="text" name="name" placeholder="Name">
     <input type="text" name="patronymic" placeholder="Patronymic">
@@ -17,7 +17,7 @@
       <option th:each="gender:${genders}" th:value="${gender}" th:utext="${gender}"></option>
     </select>
       <input type="email" name="email" placeholder="Email">
-    <input type="submit" value="SAVE">
+    <input type="submit" id="submitAddClientForm" value="SAVE">
   </form>
 </div>
 <div class="table">

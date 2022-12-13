@@ -1,0 +1,23 @@
+* {
+    font-family: "Roboto Light", sans-serif;
+}
+
+/*page header*/
+
+.lanCont {
+    margin: 0 auto 20px;
+    padding: 10px;
+    background: #f2f5f9;
+}
+
+.lanEl {
+    float: left;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.lanCont :last-child{
+    margin-right: 0;
+}
+
+/*page header*/

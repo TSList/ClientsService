@@ -29,9 +29,10 @@ public class User {
 	private String username;
 	@Column(nullable = false)
 	private String password;
-	@Column(nullable = false)
+	@Column()
 	private Role role;
 	@Column(nullable = false)
 	private Status status;
-
+	@Column(nullable = false, unique = true)
+	private String email;
 }

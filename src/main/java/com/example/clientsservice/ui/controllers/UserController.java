@@ -33,13 +33,13 @@ public class UserController {
 	}
 
 	@PostMapping("addUserForm")
-	public String addClientForm(@ModelAttribute User user) {
+	public String addUserForm(@ModelAttribute User user) {
 		userService.save(user);
 		return "redirect:users";
 	}
 
 	@PostMapping("openUserForm")
-	public ModelAndView openClientForm(@RequestParam("id") Integer id) {
+	public ModelAndView openUserForm(@RequestParam("id") Integer id) {
 		return new ModelAndView("redirect:userUpdate", new ModelMap("id",id));
 	}
 }

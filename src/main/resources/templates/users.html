@@ -10,6 +10,7 @@
 <div class="userForm">
     <form th:action="@{/addUserForm}" method="post">
         <input type="text" name="username" placeholder="Username">
+        <input type="text" name="email" placeholder="email">
         <input type="password" name="password" placeholder="Password">
         <select name="role" id="role">
             <option th:each="role:${roles}" th:value="${role}" th:utext="${role}"></option>
@@ -28,12 +29,14 @@
             <th>Username</th>
             <th>role</th>
             <th>Status</th>
+            <th>email</th>
         </tr>
         <tr th:each="user:${users}">
             <td th:utext="${user.id}"></td>
             <td th:utext="${user.username}"></td>
             <td th:utext="${user.role}"></td>
             <td th:utext="${user.status}"></td>
+            <td th:utext="${user.email}"></td>
               <td>
                 <form th:action="@{/openUserForm}" method="post">
                     <input type="hidden" name="id" th:value="${user.id}">

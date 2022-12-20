@@ -30,4 +30,9 @@ public class UserServiceDb implements UserService {
 		return userRepository.findById(id).get();
 	}
 
+	@Override
+	public User findByUsername(String username) {
+		return userRepository.findByUsername(username);
+	}
+
 }

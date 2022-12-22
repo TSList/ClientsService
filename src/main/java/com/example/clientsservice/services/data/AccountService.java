@@ -10,4 +10,6 @@ public interface AccountService {
 	Account findById(Long id);
 
 	List<Account> saveALL(List<Account> account);
+
+	List<Account>findAllByAmountEquals(int amount);
 }

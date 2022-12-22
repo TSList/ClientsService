@@ -79,10 +79,11 @@ public class SecurityConfig {
 			.antMatchers(
 				"/",
 				"/clients"
-			).hasAnyAuthority(
+			).authenticated()
+			/*.hasAnyAuthority(
 				USER.name(),
 				ADMIN.name()
-			)
+			)*/
 			//
 			.antMatchers(
 				"/users"
@@ -92,12 +93,12 @@ public class SecurityConfig {
 			.and()
 			.formLogin()
 			.loginPage("/authorization")
-			.permitAll()
+
 		//
 			.and()
 			.logout()
-			.logoutUrl("j_spring_security_logout")
-			.logoutSuccessUrl("/authorization.html")
+//			.logoutUrl("j_spring_security_logout")
+			.logoutSuccessUrl("/authorization")
 			;
 
 		return httpSecurity.build();
